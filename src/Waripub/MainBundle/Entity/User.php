@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Waripub\MainBundle\Repository\UserRepository")
  * @ORM\InheritanceType ("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn (name = "roles")
+ * @ORM\DiscriminatorColumn (name = "type", type="string")
  * @ORM\DiscriminatorMap({"SUPER_ADMIN" = "User", "SOUSCRIPTEUR" = "Souscripteur", "PRESTATAIRE" = "Prestataire"})
  */
 class User extends BaseUser
