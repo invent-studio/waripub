@@ -9,9 +9,8 @@
 namespace Waripub\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Waripub\MainBundle\Controller\DefaultController ;
 
-class SouscripteurController extends DefautController
+class SouscripteurController extends Controller
 {
 
 }

@@ -9,10 +9,9 @@
 namespace Waripub\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Waripub\MainBundle\Controller\DefaultController ;
 
 
-class PartenaireController extends DefautController
+class PartenaireController extends Controller
 {
 
 }
