@@ -15,4 +15,13 @@ class DefaultController extends Controller
         //return $this->render('WaripubMainBundle:Default:index.html.twig');
         return $this->render('@WaripubMain/Default/index.html.twig');
     }
+
+    /**
+     * @Route("/connexion")
+     */
+    public function connexionAction()
+    {
+        //return $this->render('WaripubMainBundle:Default:index.html.twig');
+        return $this->render('@WaripubMain/Default/index.html.twig');
+    }
 }

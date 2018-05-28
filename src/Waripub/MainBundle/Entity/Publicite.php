@@ -71,6 +71,29 @@ class Publicite
     private $nomfichier;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="supprime_pub", type="boolean")
+     */
+    private $supprimer;
+
+    /**
+     * @return mixed
+     */
+    public function getSupprimer()
+    {
+        return $this->supprimer;
+    }
+
+    /**
+     * @param mixed $supprimer
+     */
+    public function setSupprimer($supprimer)
+    {
+        $this->supprimer = $supprimer;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="Prestataire")
      */
     private $prestataire ;
