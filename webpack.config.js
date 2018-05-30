@@ -1,3 +1,4 @@
+
 /**
  * Created by inventstudio on 25/05/2018.
  */
@@ -27,12 +28,12 @@ Encore
     // show OS notifications when builds finish/fail
     .enableBuildNotifications()
 
-// create hashed filenames (e.g. app.abc123.css)
-// .enableVersioning()
+    // create hashed filenames (e.g. app.abc123.css)
+    // .enableVersioning()
 
-// allow sass/scss files to be processed
-     .enableSassLoader(function(sassOptions) {}, {
-             resolveUrlLoader: false
+    // allow sass/scss files to be processed
+    .enableSassLoader(function(sassOptions) {}, {
+        resolveUrlLoader: false
     })
 ;
 
