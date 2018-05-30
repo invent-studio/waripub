@@ -12,7 +12,8 @@ Encore
     .setPublicPath('/build')
 
     // will create web/build/app.js and web/build/app.css
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('app', './web/assets/js/app.js')
+    //.addEntry('login', './web/assets/js/login.js')
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()

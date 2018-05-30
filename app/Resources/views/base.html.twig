@@ -6,17 +6,71 @@
         <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <![endif]-->
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <!-- if you extracted some CSS, include vendor.css
+            <link rel="stylesheet" href="{{ asset('build/vendor.css') }}" />
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}" />
+            -->
+            <!-- CSS Files ================================================== -->
+            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/jpreloader.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/plugin.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/prettyPhoto.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" type="text/css">
+
+            <!-- custom style css -->
+            <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}" type="text/css">
+
+            <!-- color scheme -->
+            <link rel="stylesheet" href="{{ asset('assets/css/color.css') }}" type="text/css">
+
+            <!-- revolution slider -->
+            <link rel="stylesheet" href="{{ asset('assets/rs-plugin/css/settings.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/css/rev-settings.css') }}" type="text/css">
+
+            <!-- load fonts -->
+            <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome/css/font-awesome.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/fonts/elegant_font/HTML%20CSS/style.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('assets/fonts/et-line-font/style.css') }}" type="text/css">
+
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-        <link rel="stylesheet" href="{{ asset('build/app.scss') }}">
-        <link rel="stylesheet" href="{{ asset('build/vendor.css') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-        <script src="{{ asset('build/manifest.js') }}"></script>
-        <script src="{{ asset('build/vendor.js') }}"></script>
-        <script src="{{ asset('build/app.js') }}"></script>
+        {% block javascripts %}
+            <!-- these two files now must be included in every page
+            <script src="{{ asset('build/manifest.js') }}"></script>
+            <script src="{{ asset('build/vendor.js') }}"></script>
+            <script src="{{ asset('build/app.js') }}"></script>
+             -->
+            <!-- Javascript Files
+   ================================================== -->
+            <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jpreLoader.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.isotope.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.prettyPhoto.js') }}"></script>
+            <script src="{{ asset('assets/js/easing.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.ui.totop.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.flexslider-min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.scrollto.js') }}"></script>
+            <script src="{{ asset('assets/js/owl.carousel.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.countTo.js') }}"></script>
+            <script src="{{ asset('assets/js/classie.js') }}"></script>
+            <script src="{{ asset('assets/js/designesia.js') }}"></script>
+            <script src="{{ asset('assets/js/validation.js') }}"></script>
+
+            <!-- SLIDER REVOLUTION SCRIPTS  -->
+            <script type="text/javascript" src="{{ asset('assets/rs-plugin/js/jquery.themepunch.plugins.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+
+        {% endblock %}
     </body>
 </html>

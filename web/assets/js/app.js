@@ -8,6 +8,7 @@ require('bootstrap-sass');
 // import the function from greet.js (the .js extension is optional)
 // ./ (or ../) means to look for a local file
 var greet = require('./greet');
+/*
 require('./jpreLoader.js');
 require('./bootstrap.min.js');
 require('./jquery.isotope.min.js');
@@ -24,7 +25,7 @@ require('./validation.js');
 
 require('../rs-plugin/js/jquery.themepunch.plugins.min.js');
 require('../rs-plugin/js/jquery.themepunch.revolution.min.js');
-
+*/
 $(document).ready(function() {
     $('body').prepend('<h1>'+greet('john')+'</h1>');
     $('[data-toggle="popover"]').popover();
