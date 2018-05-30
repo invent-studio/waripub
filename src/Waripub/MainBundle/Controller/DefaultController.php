@@ -17,11 +17,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/connexion")
+     * @Route("/comment-ca-marche")
      */
-    public function connexionAction()
+    public function commmentcamarcheAction()
     {
         //return $this->render('WaripubMainBundle:Default:index.html.twig');
-        return $this->render('@WaripubMain/Default/index.html.twig');
+        return $this->render('@WaripubMain/Default/commentcamarche.html.twig');
     }
 }
