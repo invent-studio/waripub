@@ -94,7 +94,7 @@ class Publicite
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Prestataire")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $prestataire ;
 

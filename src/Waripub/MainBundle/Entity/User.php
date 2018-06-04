@@ -10,9 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Waripub\MainBundle\Repository\UserRepository")
- * @ORM\InheritanceType ("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn (name = "type", type="string")
- * @ORM\DiscriminatorMap({"SUPER_ADMIN" = "User", "SOUSCRIPTEUR" = "Souscripteur", "PRESTATAIRE" = "Prestataire"})
  */
 class User extends BaseUser
 {
@@ -86,9 +83,73 @@ class User extends BaseUser
     private $solde;
 
     /**
+     * @var text
+     *
+     * @ORM\Column(name="descr_user", type="text")
+     */
+    private $description;
+
+    // DEBUT SOUSCRIPTEUR
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbabonnefb", type="bigint")
+     */
+    private $nbabonnefb;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbabonnetwitter", type="bigint")
+     */
+    private $nbabonnetwitter;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbabonneinstagram", type="bigint")
+     */
+    private $nbabonneinstagram;
+
+    // FIN SOUSCRIPTEUR
+
+
+    // DEBUT PRESTATAIRE
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rccm", type="string")
+     */
+    private $rccm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_repr", type="string")
+     */
+    private $nomrepresentant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel_repr", type="string")
+     */
+    private $telrepresentant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email_repr", type="string")
+     */
+    private $emailrepresentant;
+
+    // FIN PRESTATAIRE
+
+    /**
      * @return datetime
      */
-    public function getDatecreation(): datetime
+    public function getDatecreation()
     {
         return $this->datecreation;
     }
@@ -104,7 +165,7 @@ class User extends BaseUser
     /**
      * @return datetime
      */
-    public function getDatemodif(): datetime
+    public function getDatemodif()
     {
         return $this->datemodif;
     }
@@ -120,7 +181,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getNom(): string
+    public function getNom()
     {
         return $this->nom;
     }
@@ -136,7 +197,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getTel(): string
+    public function getTel()
     {
         return $this->tel;
     }
@@ -152,7 +213,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getLienfb(): string
+    public function getLienfb()
     {
         return $this->lienfb;
     }
@@ -168,7 +229,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getLientwitter(): string
+    public function getLientwitter()
     {
         return $this->lientwitter;
     }
@@ -184,7 +245,7 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getLieninstagram(): string
+    public function getLieninstagram()
     {
         return $this->lieninstagram;
     }
@@ -200,7 +261,7 @@ class User extends BaseUser
     /**
      * @return int
      */
-    public function getSolde(): int
+    public function getSolde()
     {
         return $this->solde;
     }
@@ -212,5 +273,150 @@ class User extends BaseUser
     {
         $this->solde = $solde;
     }
+
+    /**
+     * @return int
+     */
+    public function getNbabonnefb()
+    {
+        return $this->nbabonnefb;
+    }
+
+    /**
+     * @param int $nbabonnefb
+     */
+    public function setNbabonnefb(int $nbabonnefb)
+    {
+        $this->nbabonnefb = $nbabonnefb;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbabonnetwitter()
+    {
+        return $this->nbabonnetwitter;
+    }
+
+    /**
+     * @param int $nbabonnetwitter
+     */
+    public function setNbabonnetwitter(int $nbabonnetwitter)
+    {
+        $this->nbabonnetwitter = $nbabonnetwitter;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbabonneinstagram()
+    {
+        return $this->nbabonneinstagram;
+    }
+
+    /**
+     * @param int $nbabonneinstagram
+     */
+    public function setNbabonneinstagram(int $nbabonneinstagram)
+    {
+        $this->nbabonneinstagram = $nbabonneinstagram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRccm()
+    {
+        return $this->rccm;
+    }
+
+    /**
+     * @param string $rccm
+     */
+    public function setRccm(string $rccm)
+    {
+        $this->rccm = $rccm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomrepresentant()
+    {
+        return $this->nomrepresentant;
+    }
+
+    /**
+     * @param string $nomrepresentant
+     */
+    public function setNomrepresentant(string $nomrepresentant)
+    {
+        $this->nomrepresentant = $nomrepresentant;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTelrepresentant()
+    {
+        return $this->telrepresentant;
+    }
+
+    /**
+     * @param string $telrepresentant
+     */
+    public function setTelrepresentant(string $telrepresentant)
+    {
+        $this->telrepresentant = $telrepresentant;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailrepresentant()
+    {
+        return $this->emailrepresentant;
+    }
+
+    /**
+     * @param string $emailrepresentant
+     */
+    public function setEmailrepresentant(string $emailrepresentant)
+    {
+        $this->emailrepresentant = $emailrepresentant;
+    }
+
+    /**
+     * @return text
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param text $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+    }
+
 
 }

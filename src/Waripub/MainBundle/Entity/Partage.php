@@ -36,7 +36,7 @@ class Partage
     private $reseaupartage;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Souscripteur")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $souscripteur ;
 
