@@ -1,4 +1,5 @@
 <?php
+// src/Waripub/MainBundle/Controller/RegistrationController.php
 namespace Waripub\MainBundle\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -19,8 +20,9 @@ class RegistrationController extends BaseController
         $date = date("Y-m-d h:i:s");
 
         $user = $userManager->createUser();
-        $user->setEnabled(true);
-        $user->setDatecreation($date);
+        $user->setEnabled(false);
+        $user->setDatecreation("2018-05-03 10:00:00");
+        $user->setDateModif($date);
 
 
         $event = new GetResponseUserEvent($user, $request);
@@ -67,8 +69,11 @@ class RegistrationController extends BaseController
             }
         }
 
+        return $this->render('@FOSUser/Security/login.html.twig');
+        /*
         return $this->render('@FOSUser/Registration/register.html.twig', array(
             'form' => $form->createView(),
         ));
+        */
     }
 }
