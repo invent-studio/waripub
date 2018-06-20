@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Publicite
 {
     /**
-     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -24,84 +23,49 @@ class Publicite
     /**
      * @var string
      *
-     * @ORM\Column(name="titre_pub", type="string")
+     * @ORM\Column(name="titre_pub", type="string", nullable=true)
      */
     private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="desc_pub", type="string")
+     * @ORM\Column(name="desc_pub", type="string", nullable=true)
      */
     private $description;
 
     /**
-     * @var datetime
+     * @var string
      *
-     * @ORM\Column(name="date_creation_pub", type="datetime")
+     * @ORM\Column(name="date_creation_pub", type="datetime", nullable=false)
      */
     private $datecreation;
 
     /**
-     * @var datetime
-     *
-     * @ORM\Column(name="date_publication_pub", type="datetime")
-     */
-    private $datepublication;
-
-    /**
-     * @var datetime
-     *
-     * @ORM\Column(name="date_fin_publication_pub", type="datetime")
-     */
-    private $datefinpublication;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="type_pub", type="string")
+     * @ORM\Column(name="type_pub", type="string", nullable=false)
      */
     private $typepublicite;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_fichier_pub", type="string")
+     * @ORM\Column(name="nom_fichier_pub", type="string", nullable=false)
      */
     private $nomfichier;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="supprime_pub", type="boolean")
+     * @ORM\Column(name="supprime_pub", type="boolean", nullable=true)
      */
     private $supprimer;
-
-    /**
-     * @return mixed
-     */
-    public function getSupprimer()
-    {
-        return $this->supprimer;
-    }
-
-    /**
-     * @param mixed $supprimer
-     */
-    public function setSupprimer($supprimer)
-    {
-        $this->supprimer = $supprimer;
-    }
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
      */
     private $prestataire ;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Position")
-     */
-    private $position ;
 
     /**
      * @ORM\ManyToOne(targetEntity="CategoriePub")
@@ -110,13 +74,24 @@ class Publicite
 
 
     /**
-     * Get id
-     *
+     * @ORM\ManyToOne(targetEntity="Position")
+     */
+    private $position ;
+
+    /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -152,52 +127,21 @@ class Publicite
     }
 
     /**
-     * @return datetime
+     * @return string
      */
-    public function getDatecreation(): datetime
+    public function getDatecreation(): string
     {
         return $this->datecreation;
     }
 
     /**
-     * @param datetime $datecreation
+     * @param string $datecreation
      */
-    public function setDatecreation(datetime $datecreation)
+    public function setDatecreation(string $datecreation)
     {
         $this->datecreation = $datecreation;
     }
 
-    /**
-     * @return datetime
-     */
-    public function getDatepublication(): datetime
-    {
-        return $this->datepublication;
-    }
-
-    /**
-     * @param datetime $datepublication
-     */
-    public function setDatepublication(datetime $datepublication)
-    {
-        $this->datepublication = $datepublication;
-    }
-
-    /**
-     * @return datetime
-     */
-    public function getDatefinpublication(): datetime
-    {
-        return $this->datefinpublication;
-    }
-
-    /**
-     * @param datetime $datefinpublication
-     */
-    public function setDatefinpublication(datetime $datefinpublication)
-    {
-        $this->datefinpublication = $datefinpublication;
-    }
 
     /**
      * @return string
@@ -232,6 +176,22 @@ class Publicite
     }
 
     /**
+     * @return bool
+     */
+    public function isSupprimer(): bool
+    {
+        return $this->supprimer;
+    }
+
+    /**
+     * @param bool $supprimer
+     */
+    public function setSupprimer(bool $supprimer)
+    {
+        $this->supprimer = $supprimer;
+    }
+
+    /**
      * @return mixed
      */
     public function getPrestataire()
@@ -250,22 +210,6 @@ class Publicite
     /**
      * @return mixed
      */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param mixed $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCategoriePub()
     {
         return $this->categoriePub;
@@ -277,6 +221,22 @@ class Publicite
     public function setCategoriePub($categoriePub)
     {
         $this->categoriePub = $categoriePub;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 
 

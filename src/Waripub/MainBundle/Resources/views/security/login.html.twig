@@ -1,0 +1,186 @@
+{# app/Resources/views/security/login.html.twig #}
+{# ... you will probably extend your base template, like base.html.twig #}
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    <!-- CSS Files ================================================== -->
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/jpreloader.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugin.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/prettyPhoto.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" type="text/css">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}" type="text/css">
+    <!-- color scheme -->
+    <link rel="stylesheet" href="{{ asset('assets/css/color.css') }}" type="text/css">
+
+    <!-- revolution slider
+    <link rel="stylesheet" href="{{ asset('assets/rs-plugin/css/settings.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/rev-settings.css') }}" type="text/css">
+    -->
+
+    <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome/css/font-awesome.css') }}" type="text/css">
+    <!-- load fonts
+    <link rel="stylesheet" href="{{ asset('assets/fonts/elegant_font/HTML%20CSS/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/et-line-font/style.css') }}" type="text/css">
+    -->
+{% endblock %}
+{% block body  %}
+    <div id="wrapper">
+        <div class="page-overlay">
+        </div>
+
+
+        <!-- header begin -->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- logo begin -->
+                        <h1 id="logo">
+                            <a href="">
+                                <img class="logo-1" src="{{ asset('assets/images/logo.png') }}" style="width: 150px" alt="">
+                                <img class="logo-2" src="{{ asset('assets/images/logo.png') }}" alt="">
+                            </a>
+                        </h1>
+                        <!-- logo close -->
+
+                        <!-- small button begin -->
+                        <span id="menu-btn"></span>
+                        <!-- small button close -->
+
+                        <!-- mainmenu begin -->
+                        <nav>
+                            <ul id="mainmenu">
+                                <li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        {{ app.user.username }} |
+                                        <a class="active" href="{{ path('logout') }}">
+                                            Déconnexion
+                                        </a>
+                                    {% else %}
+                                        <a class="active" href="{{ path('login') }}">Connexion</a>
+                                    {% endif %}
+                                </li>
+                                <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                                <li><a href="comment-ca-marche">Comment ça marche</a></li>
+
+                            </ul>
+                        </nav>
+
+                    </div>
+                    <!-- mainmenu close -->
+
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+
+
+        <!-- content begin -->
+        <div id="content" class="no-bottom no-top">
+
+
+            <!-- section begin -->
+            <section id="section-welcome" class="full-height dark" data-speed="3" data-type="background">
+
+                <div class="center-y text-center">
+                    {% if error %}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <h3>Gagner de l'argent en participant à des partages de publicités sur les réseaux sociaux. <br/>Avec votre participation active, vous pouvez vous faire une véritable fortune.</h3>
+                    <div class="spacer-single"></div>
+                    <div class="text-slider border-deco">
+                        <div class="text-item">GAGNEZ DE L'ARGENT AVEC <span class="id-color">WARIPUB</span></div>
+                    </div>
+                    <div class="spacer-single"></div>
+                    <a class="btn btn-border btn-big"  onclick="document.getElementById('id01').style.display='block'">Connexion</a>
+                    <a class="btn btn-border btn-big" href="{{ path('inscription') }}" id="register">Inscription</a>
+                </div>
+            </section>
+            <!-- section close -->
+
+            <div id="id01" class="modal">
+
+                <form class="modal-content animate" method="post" action="{{ path('login') }}" style="max-width: 400px; min-width: 400px;">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <img src="{{ asset('assets/images/logo.png') }}">
+                    </div>
+
+                    <div class="cont">
+                        <label for="uname"><b>Nom d'utilisateur ou E-mail</b></label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" required />
+
+                        <label for="psw"><b>Mot de passe</b></label>
+                        <input type="password" id="password" name="_password" required />
+
+                        <button type="submit">Connexion</button>
+                        <label>
+                            <input type="checkbox" id="remember_me" name="_remember_me" checked /> Se rappeler de moi
+                        </label>
+                    </div>
+
+                    <div class="cont" style="background-color:#f1f1f1;">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
+                        <span class="psw"> <a href="#"> Mot de passe </a> oublié ?</span>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <!-- these two files now must be included in every page
+            <script src="{{ asset('build/manifest.js') }}"></script>
+            <script src="{{ asset('build/vendor.js') }}"></script>
+            <script src="{{ asset('build/app.js') }}"></script>
+             -->
+    <!-- Javascript Files
+================================================== -->
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jpreLoader.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.isotope.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.prettyPhoto.js') }}"></script>
+    <script src="{{ asset('assets/js/easing.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.ui.totop.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.flexslider-min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.scrollto.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('assets/js/classie.js') }}"></script>
+    <script src="{{ asset('assets/js/designesia.js') }}"></script>
+    <script src="{{ asset('assets/js/validation.js') }}"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- SLIDER REVOLUTION SCRIPTS
+    <script type="text/javascript" src="{{ asset('assets/rs-plugin/js/jquery.themepunch.plugins.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+     -->
+
+{% endblock %}

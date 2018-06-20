@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Partage
 {
     /**
-     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,16 +21,16 @@ class Partage
     private $id;
 
     /**
-     * @var datetime
+     * @var string
      *
-     * @ORM\Column(name="date_partage", type="datetime")
+     * @ORM\Column(name="date_partage", type="datetime", nullable=false)
      */
     private $datepartage;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="reseau_partage", type="string")
+     * @ORM\Column(name="reseau_partage", type="string", nullable=false)
      */
     private $reseaupartage;
 
@@ -41,18 +40,90 @@ class Partage
     private $souscripteur ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Publicite")
+     * @ORM\ManyToOne(targetEntity="Publication")
      */
-    private $publicite ;
+    private $publication ;
 
     /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return datetime
+     */
+    public function getDatepartage(): datetime
+    {
+        return $this->datepartage;
+    }
+
+    /**
+     * @param datetime $datepartage
+     */
+    public function setDatepartage(datetime $datepartage)
+    {
+        $this->datepartage = $datepartage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReseaupartage(): string
+    {
+        return $this->reseaupartage;
+    }
+
+    /**
+     * @param string $reseaupartage
+     */
+    public function setReseaupartage(string $reseaupartage)
+    {
+        $this->reseaupartage = $reseaupartage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSouscripteur()
+    {
+        return $this->souscripteur;
+    }
+
+    /**
+     * @param mixed $souscripteur
+     */
+    public function setSouscripteur($souscripteur)
+    {
+        $this->souscripteur = $souscripteur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublication()
+    {
+        return $this->publication;
+    }
+
+    /**
+     * @param mixed $publication
+     */
+    public function setPublication($publication)
+    {
+        $this->publication = $publication;
+    }
+
+
 }
 

@@ -68,16 +68,18 @@ swiftmailer:
     spool: { type: memory }
 
 # FOS User Bundle
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: Waripub\MainBundle\Entity\User
-    service:                               # this lines
-            mailer: fos_user.mailer.twig_swift # this lines
-    from_email:
-            address: "%mailer_user%"
-            sender_name: "Waripub"
-    registration:
-            form:
-                type: Waripub\MainBundle\Form\RegistrationType
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: Waripub\MainBundle\Entity\User
+#    service:                               # this lines
+#            mailer: fos_user.mailer.twig_swift # this lines
+#    from_email:
+#            address: "%mailer_user%"
+#            sender_name: "Waripub.com"
+#    registration:
+#            form:
+#                type: Waripub\MainBundle\Form\RegistrationType
+#            confirmation:
+#                enabled: true
 

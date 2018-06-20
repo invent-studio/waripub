@@ -1,4 +1,10 @@
 services:
+#    fos_user.registration.controller:
+#        class: Waripub\MainBundle\Controller\RegistrationController
+#        arguments: [%fos_user.model.user.class%]
+#        tags:
+#            - {name:form.type, alias:waripub_user_registration}
+#         arguments: [$eventDispatcher: '@event_dispatcher', $formFactory: '@fos_user.registration.form.factory', $userManager: '@fos_user.user_manager', $tokenStorage: 'security.token_storage']
 #    waripub_main.example:
 #        class: Waripub\MainBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

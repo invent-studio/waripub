@@ -3,17 +3,17 @@
 namespace Waripub\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Paiement
  *
  * @ORM\Table(name="paiement")
  * @ORM\Entity(repositoryClass="Waripub\MainBundle\Repository\PaiementRepository")
+ * @UniqueEntity(fields="reference", message="Cette réference existe déjà")
  */
 class Paiement
 {
     /**
-     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -29,30 +29,30 @@ class Paiement
     private $reference;
 
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="montant", type="integer")
+     * @ORM\Column(name="montant", type="integer", nullable=false)
      */
     private $montant;
 
     /**
-     * @var datetime
+     * @var string
      *
-     * @ORM\Column(name="date_paie", type="datetime")
+     * @ORM\Column(name="date_paie", type="datetime" , nullable=false)
      */
     private $date;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="operation", type="boolean")
+     * @ORM\Column(name="operation", type="boolean", nullable=true)
      */
     private $operation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mode_paie", type="string")
+     * @ORM\Column(name="mode_paie", type="string", nullable=false)
      */
     private $mode;
 
@@ -62,13 +62,26 @@ class Paiement
     private $user ;
 
     /**
-     * Get id
+     * @var string
      *
+     * @ORM\Column(name="detail_paie", type="string", nullable=true)
+     */
+    private $detail;
+
+    /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -165,6 +178,22 @@ class Paiement
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDetail(): string
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @param string $detail
+     */
+    public function setDetail(string $detail)
+    {
+        $this->detail = $detail;
     }
 
 

@@ -1,0 +1,361 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {% if title is defined %}
+        {{ title }}
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    <!-- CSS Files ================================================== -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome/css/font-awesome.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style-register.css') }}" type="text/css">
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/color.css') }}" type="text/css">-->
+
+{% endblock %}
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-md-6 col-xs-6">
+                {% if activation is defined and error is defined %}
+                    {% if activation == true %}
+                        <h3 class="alert alert-success">Votre compte est activé avec succès !</h3>
+                        <a href="{{ path('login') }}" type="button" class="btn btn-success ">Connectez-vous maintenant</a>
+                    {% else %}
+                        <h3 class="alert alert-danger">{{ error }}</h3>
+                        <a href="{{ path('login') }}" type="button" class="btn btn-success ">Retour à la page d'accueil</a>
+                    {% endif %} <!-- Fin if activation -->
+                {% endif %} <!-- Fin if defined -->
+
+                {% if succes is defined and form is defined %}
+                    {% if succes == true %}
+                        <h3 class="alert alert-success">{{ msg }}</h3>
+                        <a href="{{ path('login') }}" type="button" class="btn btn-success ">Retour à la page d'accueil</a>
+                    {% else %}
+                        <div class="stepwizard">
+                            <div class="stepwizard-row setup-panel">
+                                <div class="stepwizard-step col-xs-3" style="width: 20%">
+                                    <a href="#step-1" type="button" class="btn btn-success ">Inscription</a>
+
+                                </div>
+                                <div class="stepwizard-step col-xs-3" style="width: 20%">
+                                    <a href="#step-2" type="button" class="btn btn-default" disabled="disabled">Confirmation</a>
+
+                                </div>
+                                <div class="stepwizard-step col-xs-3" style="width: 20%">
+                                    <a href="#step-3" type="button" class="btn btn-default " disabled="disabled">Profil</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        {{ form_start(form) }}
+                        <div class="text-danger">{{ form_errors(form.username) }}</div>
+                        <div class="text-danger">{{ form_errors(form.email) }}</div>
+                        <div class="text-danger">{{ form_errors(form.plainPassword.first) }}</div>
+                        <div class="text-danger">{{ form_errors(form.plainPassword.second) }}</div>
+                        <h3>CREER UN COMPTE GRATUITEMENT</h3>
+
+                        <div class="setup-content" id="step-1">
+                            <!--
+                            <label>Vous êtes: </label>
+                            <select name="type" class="form-control" id="area-dropdown">
+                                <option value="default" style="color: #bdc4c7 !important;">Choisissez un type de compte...</option>
+                                <option value="souscripteur">Je suis souscripteur: je désire partager des publicités</option>
+                                <option value="partenaire">Je suis partenaire: je désire poster mes publicités </option>
+                            </select>
+                            -->
+                            {{ form_label(form.roles) }}
+                            {{ form_widget(form.roles,{'attr': {'class': 'form-control'}}) }}
+
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.username, "Nom d'utilisateur") }}
+                                {{ form_widget(form.username,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.plainPassword.first) }}
+                                {{ form_widget(form.plainPassword.first) }}
+                            </div>
+
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.plainPassword.second) }}
+                                {{ form_widget(form.plainPassword.second) }}
+                            </div>
+
+                            <button class="btn btn-primary nextBtn pull-right route-dropdown btn btn-default pull-right" type="button">Suivant</button>
+                        </div>
+
+                        <div class="setup-content" id="step-2">
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.nom, 'Nom et prénoms') }}
+                                {{ form_widget(form.nom,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.tel, 'Téléphone') }}
+                                {{ form_widget(form.tel,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.lienfb,'Lien Facebook') }}
+                                {{ form_widget(form.lienfb,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="part-souscripteur">
+                                <div class="form-group route-dropdown">
+                                    {{ form_label(form.nbabonnefb,"Nombre d'abonnés sur Facebook") }}
+                                    {{ form_widget(form.nbabonnefb,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.lientwitter,'Lien Twitter') }}
+                                {{ form_widget(form.lientwitter,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="part-souscripteur">
+                                <div class="form-group route-dropdown">
+                                    {{ form_label(form.nbabonnetwitter,"Nombre d'abonnés sur Twitter") }}
+                                    {{ form_widget(form.nbabonnetwitter,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.lieninstagram,"Lien Instagram") }}
+                                {{ form_widget(form.lieninstagram,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="part-souscripteur">
+                                <div class="form-group route-dropdown">
+                                    {{ form_label(form.nbabonneinstagram,"Nombre d'abonnés sur Instagram") }}
+                                    {{ form_widget(form.nbabonneinstagram,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary nextBtn pull-right route-dropdown btn btn-default pull-right" type="button">Suivant</button>
+                        </div>
+
+                        <div class="setup-content" id="step-3">
+                            <div class="form-group route-dropdown part-partenaire">
+                                {{ form_label(form.rccm, "Régime de Commerce") }}
+                                {{ form_widget(form.rccm,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group route-dropdown">
+                                {{ form_label(form.description,"A propos") }}
+                                {{ form_widget(form.description,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="infos-representant part-partenaire">
+                                <hr/>
+                                <h3>Informations représentant</h3>
+                                <div class="form-group route-dropdown">
+                                    {{ form_label(form.nomrepresentant,"Nom et prénoms") }}
+                                    {{ form_widget(form.nomrepresentant,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group route-dropdown">
+                                    {{ form_label(form.telrepresentant,"Téléphone") }}
+                                    {{ form_widget(form.telrepresentant,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group route-dropdown">
+                                    {{ form_label(form.emailrepresentant,"E-mail") }}
+                                    {{ form_widget(form.emailrepresentant,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <input type="checkbox" name="cgu" required /> J'ai lu et j'accepte les <a href="cgu">conditions générales d'utilisation</a><br>
+                            <!--<div class="g-recaptcha route-dropdown " data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback"
+                                 data-expired-callback="expiredRecaptchaCallback"></div>
+                            <br>
+                            <button class="btn btn-primary nextBtn pull-right route-dropdown btn btn-default pull-right" type="submit">S'inscrire</button>-->
+                            <div>
+
+                                {{ form_widget(form.save,{'attr': {'class': 'btn btn-big btn-success pull-right'}}) }}
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                        <!-- <div class="g-recaptcha route-dropdown " data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback"
+                            data-expired-callback="expiredRecaptchaCallback"></div> -->
+                        <!-- <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha"> -->
+                        <!-- <div class="help-block with-errors"></div> -->
+
+                        <br>
+                        <!-- <p class="route-dropdown ">La création d'un compte implique que vous avez lu et accepté les termes et conditions d'utilisation.</p> -->
+                    {% endif %} <!-- Fin if succes -->
+                {% endif %} <!-- Fin if defined -->
+            </div>
+            <div class="col-md-4 col-xs-6 aide">
+
+                <div class='content d-flex justify-content-center align-items-center' id="default">
+                    <div class='content-inner'>
+                        <h4 class='mb-4'>QUI PEUT S'INSCRIRE ?</h4>
+                        <br>
+                        <h3 style="color: black">Les partenaires</h3>
+                        <ul class='step-list mt-4 teal no-border' style="margin-left: -40px;">
+
+                            <li class='step'>
+                            <span class=''>
+                                <i class="far fa-check-circle fa-2x"></i>
+                            </span>
+                                <span>
+                                <strong>Les entreprises (PME, PMI, SARL, SA...).</strong>
+                            </span>
+                            </li>
+
+                            <li class='step'>
+                            <span class=''>
+                                <i class="far fa-check-circle fa-2x"></i>
+                            </span>
+                                <span>
+                                <strong>Les organismes étatiques (les Ministères…).</strong>
+                            </span>
+                            </li>
+                            <li class='step'>
+                            <span class=''>
+                                <i class="far fa-check-circle fa-2x"></i>
+                            </span>
+                                <span>
+                                <strong>Les particuliers.</strong>
+                            </span>
+                            </li>
+                        </ul>
+
+                        <h3 style="color: black">Les souscripteurs</h3>
+                        <ul class='step-list mt-4 teal no-border' style="margin-left: -40px;">
+
+                            <li class='step'>
+                            <span class=''>
+                                <i class="far fa-check-circle fa-2x"></i>
+                            </span>
+                                <span>
+                                <strong>Les bloggeurs</strong>
+                            </span>
+                            </li>
+
+                            <li class='step'>
+                            <span class=''>
+                                <i class="far fa-check-circle fa-2x"></i>
+                            </span>
+                                <span>
+                                <strong>Les influenceurs</strong>
+                            </span>
+                            </li>
+                            <li class='step'>
+                            <span class=''>
+                                <i class="far fa-check-circle fa-2x"></i>
+                            </span>
+                                <span>
+                                <strong>Toutes personnes ayant un nombre considérable d’abonner ayant de 1.000 et plus sur Facebook,
+                                    Twitter et Instagram.</strong>
+                            </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class='content d-flex justify-content-center align-items-center' id="souscripteur">
+                    <div class='content-inner'>
+                        <h4 class='mb-4'>SOUSCRIPTEUR</h4>
+                        <br>
+
+                        <h4 class='mb-4 mt-5' style="color: black">Comment ça marche ?</h4>
+                        <ul class='step-list mt-4 teal'>
+                            <li class='step'>
+                                <span class='step-tag'>1</span>
+                                <span>Le souscripteur se connecte à son compte</span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>2</span>
+                                <span>Il partage les publicités sur ses pages de réseaux sociaux </span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>3</span>
+                                <span>Une équipe charger du control de l\'authenticité des activité de partage valide les posts après
+                                vérification</span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>4</span>
+                                <span>Le souscripteur recoit sa paie</span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>5</span>
+                                <span>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor magni modi sapiente voluptate. Aperiam beatae cum, ex expedita
+                                magni mollitia pariatur quibusdam sequi, sunt, suscipit vel veritatis vero voluptate voluptates
+                            </span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>6</span>
+                                <span>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor magni modi sapiente voluptate. Aperiam beatae cum, ex expedita
+                                magni mollitia pariatur quibusdam sequi, sunt, suscipit vel veritatis vero voluptate voluptates
+                            </span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>7</span>
+                                <span>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor magni modi sapiente voluptate. Aperiam beatae cum, ex expedita
+                                magni mollitia pariatur quibusdam sequi, sunt, suscipit vel veritatis vero voluptate voluptates
+                            </span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>8</span>
+                                <span>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor magni modi sapiente voluptate. Aperiam beatae cum, ex expedita
+                                magni mollitia pariatur quibusdam sequi, sunt, suscipit vel veritatis vero voluptate voluptates
+                            </span>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class='content d-flex justify-content-center align-items-center' id="partenaire">
+                    <div class='content-inner'>
+                        <h4 class='mb-4'>PARTENAIRE</h4>
+                        <br>
+                        <h4 class='mb-4 mt-5' style="color: black">Comment ça marche ?</h4>
+                        <ul class='step-list mt-4 teal'>
+                            <li class='step'>
+                                <span class='step-tag'>1</span>
+                                <span>Le partenaire se connecte à son compte</span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>2</span>
+                                <span>Il publie le contenu de sa publicité sur la pateforme </span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>3</span>
+                                <span>Une équipe charger du control de l\'authenticité des activité de partage valide les posts après
+                                vérification</span>
+                            </li>
+                            <li class='step'>
+                                <span class='step-tag'>4</span>
+                                <span>Le souscripteur recoit sa paie</span>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/script-register.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+{% endblock %}
+

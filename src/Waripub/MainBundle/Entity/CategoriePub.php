@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class CategoriePub
 {
     /**
-     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -24,25 +23,31 @@ class CategoriePub
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string")
+     * @ORM\Column(name="nom_cp", type="string", nullable=false)
      */
     private $nom;
 
     /**
      * @var text
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description_cp", type="text", nullable=true)
      */
-    private $desription;
+    private $description;
 
     /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -64,18 +69,19 @@ class CategoriePub
     /**
      * @return text
      */
-    public function getDesription(): text
+    public function getDescription(): text
     {
-        return $this->desription;
+        return $this->description;
     }
 
     /**
-     * @param text $desription
+     * @param text $description
      */
-    public function setDesription(text $desription)
+    public function setDescription(text $description)
     {
-        $this->desription = $desription;
+        $this->description = $description;
     }
+
 
 }
 

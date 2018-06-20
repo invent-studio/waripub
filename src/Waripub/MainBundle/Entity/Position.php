@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Position
 {
     /**
-     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -24,23 +23,39 @@ class Position
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string")
+     * @ORM\Column(name="nom_position", type="string", nullable=true)
      */
     private $nom;
 
     /**
-     * @var text
+     * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="descr_position", type="text", nullable=true)
      */
-    private $desription;
+    private $description;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="etat", type="boolean")
+     * @ORM\Column(name="etat_position", type="boolean", nullable=true)
      */
     private $etat;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return string
@@ -59,20 +74,22 @@ class Position
     }
 
     /**
-     * @return text
+     * @return string
      */
-    public function getDesription(): text
+    public function getDescription(): string
     {
-        return $this->desription;
+        return $this->description;
     }
 
     /**
-     * @param text $desription
+     * @param string $description
      */
-    public function setDesription(text $desription)
+    public function setDescription(string $description)
     {
-        $this->desription = $desription;
+        $this->description = $description;
     }
+
+
 
     /**
      * @return bool
@@ -90,14 +107,6 @@ class Position
         $this->etat = $etat;
     }
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+
 }
 

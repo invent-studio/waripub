@@ -1,0 +1,16 @@
+{# app/Resources/views/Emails/registration.html.twig #}
+<h3>Inscription avec succès !</h3>
+
+Bonjour {{ name }}, <br>
+Vous êtes inscris avec succès sur waripub.com<br>
+{{ msg |raw  }}<br><br>
+{# example, assuming you have a route named "login"
+To login, go to: <a href="{{ url('login') }}">...</a>.
+#}
+
+Merci !<br>
+
+L'équipe WARIPUB.COM<br>
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ asset('assets/images/logo.png') }}">

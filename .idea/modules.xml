@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../symf4/.idea/symf4.iml" filepath="$PROJECT_DIR$/../symf4/.idea/symf4.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/waripub.iml" filepath="$PROJECT_DIR$/.idea/waripub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../waripub.com/.idea/waripub.com.iml" filepath="$PROJECT_DIR$/../waripub.com/.idea/waripub.com.iml" />
     </modules>
   </component>
 </project>
